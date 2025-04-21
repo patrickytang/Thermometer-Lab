@@ -25,13 +25,24 @@
       <rect id="container" x="10" y="10" width="100" height="210" rx="15" />
 
       <g id="glass">
-        <rect x="45" y="20" width="30" height="160" rx="15" />
+        <rect x="45" y="20" width="30" height="160" rx="15"/>
         <ellipse cx="60" cy="180" rx="30" ry="30" />
         <rect x="46.5" y="22" width="27" height="165" rx="15" stroke="none" />
       </g>
-
+      <ellipse cx = "60" cy = "180" rx = "23" ry = "23"/>
+      <rect class ="liqid" id="stewb" x="50" y="100" width="20" height="25" rx="15"/>
     </svg>
+    
+  </div>
+  <div class="slidecontainer">
+    <input type="range" min="1" max="100" value="25" class="slider" id="myRange" onchange = "thermometerer()">
   </div>
 </body>
-
+<script>
+  function thermometerer(){
+    let temp = document.getElementById("myRange");
+    console.log("ASDASD")
+    document.getElementById("stewb").setAttribute("height", temp)
+  }
+</script>
 </html>
