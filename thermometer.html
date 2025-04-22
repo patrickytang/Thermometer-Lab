@@ -1,48 +1,74 @@
 <html>
+  <head>
+    <title>Thermometer Lab</title>
+  </head>
 
-<head>
-  <title>Thermometer Lab</title>
-</head>
+  <body>
+    <h1>Thermometer Lab</h1>
+    <div>
+      <svg
+        version="1.1"
+        viewBox="0 0 300 300"
+        xmlns="http://www.w3.org/2000/svg"
+        height="50%"
+        width="75%"
+      >
+        <style>
+          #glass {
+            fill: #ffffff;
+            stroke: #cccccc;
+            stroke-width: 3;
+          }
 
-<body>
-  <h1>Thermometer Lab</h1>
-  <div>
-    <svg version="1.1" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" height="50%" width="75%">
-      <style>
-        #glass {
-          fill: #ffffff;
-          stroke: #cccccc;
-          stroke-width: 3;
-        }
+          #container {
+            fill: #ffffff;
+            stroke: #000000;
+            stroke-width: 5;
+          }
+        </style>
 
-        #container {
-          fill: #ffffff;
-          stroke: #000000;
-          stroke-width: 5;
-        }
-      </style>
+        <rect id="container" x="10" y="10" width="100" height="210" rx="15" />
 
-      <rect id="container" x="10" y="10" width="100" height="210" rx="15" />
-
-      <g id="glass">
-        <rect x="45" y="20" width="30" height="160" rx="15"/>
-        <ellipse cx="60" cy="180" rx="30" ry="30" />
-        <rect x="46.5" y="22" width="27" height="165" rx="15" stroke="none" />
-      </g>
-      <ellipse cx = "60" cy = "180" rx = "23" ry = "23"/>
-      <rect class ="liqid" id="stewb" x="50" y="100" width="20" height="25" rx="15"/>
-    </svg>
-    
-  </div>
-  <div class="slidecontainer">
-    <input type="range" min="1" max="100" value="25" class="slider" id="myRange" onchange = "thermometerer()">
-  </div>
-</body>
-<script>
-  function thermometerer(){
-    let temp = document.getElementById("myRange");
-    console.log("ASDASD")
-    document.getElementById("stewb").setAttribute("height", temp)
-  }
-</script>
+        <g id="glass">
+          <rect x="45" y="20" width="30" height="160" rx="15" />
+          <ellipse cx="60" cy="180" rx="30" ry="30" />
+          <rect x="46.5" y="22" width="27" height="165" rx="15" stroke="none" />
+        </g>
+        <ellipse cx="60" cy="180" rx="23" ry="23" class="liqid" />
+        <rect
+          class="liqid"
+          id="stewb"
+          x="50"
+          y="170"
+          width="20"
+          height="25"
+          rx="15"
+        />
+      </svg>
+    </div>
+    <div class="slidecontainer">
+      <input
+        type="range"
+        min="10"
+        max="145"
+        value="25"
+        class="slider"
+        id="myRange"
+        onchange="thermometerer()"
+      />
+    </div>
+  </body>
+  <script>
+    function thermometerer() {
+      let temp = document.getElementById("myRange").value;
+      console.log(temp);
+      document.getElementById("stewb").setAttribute("height", temp);
+      document.getElementById("stewb").setAttribute("y", 170 - temp);
+      let asdof = document.getElementsByClassName("liqid");
+      for (let i = 0; i < asdof.length; i++) {
+        console.log("rgb("+toString(255)+","+toString(0)+","+toString(255)+")");
+        asdof[i].setAttribute("fill", "rgb("+(temp*1.75)+","+0+","+(255-temp*1.75)+")");
+      }
+    }
+  </script>
 </html>
