@@ -25,49 +25,68 @@
             stroke: #000000;
             stroke-width: 5;
           }
+
         </style>
 
         <rect id="container" x="10" y="10" width="100" height="210" rx="15" />
-
+        
         <g id="glass">
           <rect x="45" y="20" width="30" height="160" rx="15" />
           <ellipse cx="60" cy="180" rx="30" ry="30" />
           <rect x="46.5" y="22" width="27" height="165" rx="15" stroke="none" />
         </g>
-        <ellipse cx="60" cy="180" rx="23" ry="23" class="liqid" />
+        <ellipse cx="60" cy="180" rx="23" ry="23" class="liqid" fill ="rgb(135,206,250)"/>
         <rect
           class="liqid"
           id="stewb"
-          x="50"
+          x="52"
           y="170"
-          width="20"
+          width="16"
           height="25"
-          rx="15"
+          rx="8"
+          fill ="rgb(135,206,250)"
         />
+        <text x="-100"y="260"id = "temperate">temperature:</text>
+        <!-- <rect x="83" y="180" width="5.5" height="210"  fill = "red"/>
+        <rect x="68" y="60" width="5.5" height="210"  fill = "red"/>
+        <rect x="46.5" y="60" width="5.5" height="210"  fill = "red"/>
+        <rect x="59.75" y="21.5" width=".5" height="7"  fill = "red"/> -->
       </svg>
     </div>
     <div class="slidecontainer">
       <input
         type="range"
-        min="10"
-        max="145"
-        value="25"
+        min="1"
+        max="100"
+        value="0"
         class="slider"
         id="myRange"
-        onchange="thermometerer()"
+        oninput="thermometerer()"
       />
     </div>
   </body>
   <script>
     function thermometerer() {
+      // 135,206,250 - sky blue
+      // 255,140,0  - orange
+      // 255,0,0 - red
       let temp = document.getElementById("myRange").value;
       console.log(temp);
-      document.getElementById("stewb").setAttribute("height", temp);
-      document.getElementById("stewb").setAttribute("y", 170 - temp);
+      document.getElementById("stewb").setAttribute("height", temp*1.375);
+      document.getElementById("stewb").setAttribute("y", 166 - temp*1.375);
       let asdof = document.getElementsByClassName("liqid");
+      document.getElementById("temperate").textContent = "temperature: "+temp;
       for (let i = 0; i < asdof.length; i++) {
-        console.log("rgb("+toString(255)+","+toString(0)+","+toString(255)+")");
-        asdof[i].setAttribute("fill", "rgb("+(temp*1.75)+","+0+","+(255-temp*1.75)+")");
+        if (temp <= 33.3){
+          asdof[i].setAttribute("fill", "rgb("+(135)+","+(206)+","+(250)+")");
+        }
+        else if (temp <= 66.6){
+          asdof[i].setAttribute("fill", "rgb("+(255)+","+(140)+","+(0)+")");
+        }
+        else{
+          asdof[i].setAttribute("fill", "rgb("+(255)+","+(0)+","+(0)+")");
+        }
+
       }
     }
   </script>
