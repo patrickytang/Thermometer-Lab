@@ -46,17 +46,32 @@
           rx="8"
           fill ="rgb(135,206,250)"
         />
-        <text x="-100"y="260"id = "temperate">temperature:</text>
+        <text x="-100"y="260"id = "temperate">temperature: 0°F</text>
         <!-- <rect x="83" y="180" width="5.5" height="210"  fill = "red"/>
         <rect x="68" y="60" width="5.5" height="210"  fill = "red"/>
         <rect x="46.5" y="60" width="5.5" height="210"  fill = "red"/>
         <rect x="59.75" y="21.5" width=".5" height="7"  fill = "red"/> -->
+        <rect x="80" y="77.5" width="7.5" height="7"  fill = "black"/>
+        <rect x="80" y="40" width="15" height="7"  fill = "black"/>
+        <rect x="80" y="52.5" width="7.5" height="7"  fill = "black"/>
+        <rect x="80" y="65" width="15" height="7"  fill = "black"/>
+
+        <rect x="80" y="77.5" width="7.5" height="7"  fill = "black"/>
+        <rect x="80" y="90" width="15" height="7"  fill = "black"/>
+        <rect x="80" y="102.5" width="7.5" height="7"  fill = "black"/>
+        <rect x="80" y="115" width="15" height="7"  fill = "black"/>
+        <rect x="80" y="127.5" width="7.5" height="7"  fill = "black"/>
+        <rect x="80" y="140" width="15" height="7"  fill = "black"/>
+        <!-- <path d="M 64 205 A 25 25 182 0 1 38 168" stroke = "white"/> -->
+        <path  d=" M 56 164 A 17 17 0 0 1 64 164"   fill = "none" stroke = "white" stroke-width = "2.5px" stroke-linecap="round"/>
+        <path d=" M 60 197 A 17 17 0 0 1 49 167"  fill = "none" stroke = "white" stroke-width = "2.5px" stroke-linecap="round"/>
+
       </svg>
     </div>
     <div class="slidecontainer">
       <input
         type="range"
-        min="1"
+        min="0"
         max="100"
         value="0"
         class="slider"
@@ -75,7 +90,7 @@
       document.getElementById("stewb").setAttribute("height", temp*1.375);
       document.getElementById("stewb").setAttribute("y", 166 - temp*1.375);
       let asdof = document.getElementsByClassName("liqid");
-      document.getElementById("temperate").textContent = "temperature: "+temp;
+      document.getElementById("temperate").textContent = "temperature: "+Math.floor(temp*2.12)+"°F";
       for (let i = 0; i < asdof.length; i++) {
         if (temp <= 33.3){
           asdof[i].setAttribute("fill", "rgb("+(135)+","+(206)+","+(250)+")");
